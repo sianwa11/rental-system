@@ -1,0 +1,277 @@
+//
+package rentalmanagement;
+
+//
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
+public class userLogin extends javax.swing.JFrame {
+    
+    private Connection conn;
+    private Statement st;
+    private ResultSet rs;
+
+    //
+    public userLogin() {
+        initComponents();
+    }
+//
+    
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    private void initComponents() {
+
+        login_panel = new java.awt.Panel();
+        passwordtxt = new javax.swing.JPasswordField();
+        userIDtxt = new javax.swing.JTextField();
+        user_id = new javax.swing.JLabel();
+        password = new javax.swing.JLabel();
+        loginbtn = new javax.swing.JButton();
+        user = new javax.swing.JLabel();
+        userComboBox = new javax.swing.JComboBox<>();
+        signupbtn = new javax.swing.JButton();
+        logo = new javax.swing.JLabel();
+        background = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("R.M.S:Login");
+        setBounds(new java.awt.Rectangle(0, 0, 600, 500));
+        setLocation(new java.awt.Point(370, 70));
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        login_panel.setPreferredSize(new java.awt.Dimension(600, 500));
+        login_panel.setLayout(null);
+
+        passwordtxt.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        passwordtxt.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        login_panel.add(passwordtxt);
+        passwordtxt.setBounds(410, 290, 140, 30);
+
+        userIDtxt.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        userIDtxt.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        userIDtxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userIDtxtActionPerformed(evt);
+            }
+        });
+        login_panel.add(userIDtxt);
+        userIDtxt.setBounds(410, 230, 140, 30);
+
+        user_id.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        user_id.setForeground(new java.awt.Color(255, 255, 255));
+        user_id.setText("User ID:");
+        login_panel.add(user_id);
+        user_id.setBounds(340, 240, 70, 17);
+
+        password.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        password.setForeground(new java.awt.Color(255, 255, 255));
+        password.setText("Password:");
+        login_panel.add(password);
+        password.setBounds(330, 300, 80, 17);
+
+        loginbtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        loginbtn.setText("Login");
+        loginbtn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        loginbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginbtnActionPerformed(evt);
+            }
+        });
+        login_panel.add(loginbtn);
+        loginbtn.setBounds(480, 380, 100, 40);
+
+        user.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        user.setForeground(new java.awt.Color(255, 255, 255));
+        user.setText("User:");
+        login_panel.add(user);
+        user.setBounds(360, 180, 40, 17);
+
+        userComboBox.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        userComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Client", "Supervisor", "Manager" }));
+        userComboBox.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        userComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userComboBoxActionPerformed(evt);
+            }
+        });
+        login_panel.add(userComboBox);
+        userComboBox.setBounds(410, 170, 130, 30);
+
+        signupbtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        signupbtn.setText("Sign Up");
+        signupbtn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        signupbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                signupbtnActionPerformed(evt);
+            }
+        });
+        login_panel.add(signupbtn);
+        signupbtn.setBounds(340, 380, 100, 40);
+
+        logo.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rentalmanagement/Home.png"))); // NOI18N
+        logo.setText("R.M.S");
+        login_panel.add(logo);
+        logo.setBounds(440, 0, 149, 90);
+
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rentalmanagement/Base.png"))); // NOI18N
+        login_panel.add(background);
+        background.setBounds(-10, 0, 320, 500);
+
+        jLabel1.setBackground(new java.awt.Color(0, 102, 153));
+        jLabel1.setOpaque(true);
+        login_panel.add(jLabel1);
+        jLabel1.setBounds(304, 0, 300, 500);
+
+        getContentPane().add(login_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        pack();
+    }// </editor-fold>                        
+
+    private void signupbtnActionPerformed(java.awt.event.ActionEvent evt) {                                          
+        new signUp().setVisible(true);
+        this.dispose();
+        
+    }                                         
+
+    private void userComboBoxActionPerformed(java.awt.event.ActionEvent evt) {                                             
+
+    }                                            
+
+    private void userIDtxtActionPerformed(java.awt.event.ActionEvent evt) {                                          
+        // TODO add your handling code here:
+    }                                         
+
+    private void loginbtnActionPerformed(java.awt.event.ActionEvent evt) {                                         
+
+            //clients account
+            if("Client".equals(userComboBox.getSelectedItem().toString())){
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+                conn=DriverManager.getConnection("jdbc:mysql://localhost/rental","root","");
+                PreparedStatement pst= conn.prepareStatement("select * from client where Client_ID=? and Client_password=?");
+                pst.setString(1,userIDtxt.getText());
+                pst.setString(2, passwordtxt.getText());
+                rs=pst.executeQuery();
+                int count=0;//to count how many rows will be returned by our query
+                while(rs.next()){//to see if there are results in our tables
+                    count=count+1;
+                }
+                if(count==1){
+                    JOptionPane.showMessageDialog(null,"Welcome");    
+                    new clientHome().setVisible(true);
+                    this.dispose();
+                }else{
+                    JOptionPane.showMessageDialog(null,"User not found");
+                }
+            } catch (Exception e) {
+              JOptionPane.showMessageDialog(null,e);
+            }
+            //Supervisors account
+            }else if("Supervisor".equals(userComboBox.getSelectedItem().toString())){
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+                conn=DriverManager.getConnection("jdbc:mysql://localhost/rental","root","");
+                PreparedStatement pst= conn.prepareStatement("select * from supervisor where Supervisor_ID=? and Supervisor_password=?");
+                pst.setString(1,userIDtxt.getText());
+                pst.setString(2, passwordtxt.getText());
+                rs=pst.executeQuery();
+                int count=0;//to count how many rows will be returned by our query
+                while(rs.next()){//to see if there are results in our tables
+                    count=count+1;
+                }
+                if(count==1){
+                    JOptionPane.showMessageDialog(null,"Welcome");    
+                    new supervisorHome().setVisible(true);
+                    this.dispose();
+                }else{
+                    JOptionPane.showMessageDialog(null,"User not found");
+                }
+            } catch (Exception e) {
+              JOptionPane.showMessageDialog(null,e);
+            }
+                
+            }else if("Manager".equals(userComboBox.getSelectedItem().toString())){
+                try{
+                    Class.forName("com.mysql.jdbc.Driver");
+                    conn=DriverManager.getConnection("jdbc:mysql//localhost/rental","root","");
+                    PreparedStatement pst=conn.prepareStatement("select* from manager where Manager_ID=? and Manager_password");
+                    pst.setString(1,userIDtxt.getText());
+                    pst.setString(2,passwordtxt.getText());
+                    rs=pst.executeQuery();
+                    int count=0;
+                    while(rs.next()){
+                        count=count+1;
+                    }
+                    if(count==1){
+                        JOptionPane.showMessageDialog(null,"Welcome");
+                        /*new managerHome().setVisible(true);
+                          this.dispose*/
+                    }else{
+                        JOptionPane.showMessageDialog(null,"User not found");
+                    }
+                    
+                }catch(Exception e){
+                    JOptionPane.showMessageDialog(null, e);
+                }
+            } else{
+                JOptionPane.showMessageDialog(null,"Please try again");
+            }
+            
+    }                                        
+//
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(userLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(userLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(userLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(userLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new userLogin().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify                     
+    private javax.swing.JLabel background;
+    private javax.swing.JLabel jLabel1;
+    private java.awt.Panel login_panel;
+    private javax.swing.JButton loginbtn;
+    private javax.swing.JLabel logo;
+    private javax.swing.JLabel password;
+    private javax.swing.JPasswordField passwordtxt;
+    private javax.swing.JButton signupbtn;
+    private javax.swing.JLabel user;
+    private javax.swing.JComboBox<String> userComboBox;
+    private javax.swing.JTextField userIDtxt;
+    private javax.swing.JLabel user_id;
+    // End of variables declaration                   
+}
